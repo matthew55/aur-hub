@@ -1,0 +1,36 @@
+# Maintainer: Daniel Leining <daniel@the-beach.co>
+# Contributor: Daniel Leining <daniel@the-beach.co>
+
+pkgname="chunky"
+pkgver=2.4.4
+pkgrel=1
+pkgdesc="Minecraft mapping and rendering tool"
+url="http://chunky.llbit.se/"
+arch=("any")
+license=("GPL3")
+depends=("java-runtime=17" "java-openjfx=17")
+makedepends=("gendesk")
+source=("ChunkyLauncher.jar::https://chunkyupdate.lemaik.de/ChunkyLauncher.jar"
+		"${pkgname}-icon.png::https://github.com/chunky-dev/chunky/raw/544ec219dc73ebf55ee829913257dce8d532a599/chunky/src/res/${pkgname}-icon.png")
+sha512sums=("e0121b370373b74e96b3bbc7901341f519f0eea796be965343dda0524b68c986da92cd91e5641c67e76f1cac2b45b0e18ed8f3b731384961be727e0d1656b830"
+			"dbea52a8daa1ce6bee6a90cb56c94a970ad443b30535235e4b7347fe0196059756deef8567e95897816054b9695665343b6fd61ca2c7143602f7bb8902283056")
+_javadir="/usr/lib/jvm/java-17-openjdk"
+_jfxdir="$_javadir/lib"
+
+build() {
+  gendesk -f -n
+}
+
+package() {
+  cd "$pkgdir"
+
+  install -d "usr/bin"
+  # Solve incompatibilites with jrt.fs
+  printf '#!/bin/sh\n%s --module-path %s/javafx.base.jar:%s/javafx.controls.jar:%s/javafx.graphics.jar:%s/javafx.fxml.jar --add-modules=javafx.base,javafx.graphics,javafx.controls,javafx.fxml -jar /usr/share/java/chunky/chunky.jar --launcher --noRetryJavafx --javaOptions "--module-path %s/javafx.base.jar:%s/javafx.controls.jar:%s/javafx.graphics.jar:%s/javafx.fxml.jar --add-modules=javafx.base,javafx.graphics,javafx.controls,javafx.fxml" $@\n' $_javadir/bin/java $_jfxdir $_jfxdir $_jfxdir $_jfxdir $_jfxdir $_jfxdir $_jfxdir $_jfxdir > "usr/bin/$pkgname"
+  chmod 755 "usr/bin/$pkgname"
+
+  install -Dm644 $srcdir/ChunkyLauncher.jar "usr/share/java/$pkgname/$pkgname.jar"
+  install -Dm644 $srcdir/$pkgname.desktop "usr/share/applications/$pkgname.desktop"
+  install -Dm644 $srcdir/$pkgname-icon.png "usr/share/pixmaps/$pkgname.png"
+}
+
