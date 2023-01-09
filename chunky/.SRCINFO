@@ -9,10 +9,8 @@ pkgbase = chunky
 	depends = java-runtime=17
 	depends = java-openjfx=17
 	source = ChunkyLauncher.jar::https://chunkyupdate.lemaik.de/ChunkyLauncher.jar
-	source = chunky-icon.png::https://github.com/chunky-dev/chunky/raw/544ec219dc73ebf55ee829913257dce8d532a599/chunky/src/res/chunky-icon.png
 	source = chunky.sh
 	sha512sums = e0121b370373b74e96b3bbc7901341f519f0eea796be965343dda0524b68c986da92cd91e5641c67e76f1cac2b45b0e18ed8f3b731384961be727e0d1656b830
-	sha512sums = dbea52a8daa1ce6bee6a90cb56c94a970ad443b30535235e4b7347fe0196059756deef8567e95897816054b9695665343b6fd61ca2c7143602f7bb8902283056
-	sha512sums = 6cd99efd79cc82428d21f418c30675310071588320a9e0416e18390199f3d7326bbfd953437e9e112d43073cdd1d98e3780984048df1d5ea7697b115db27fb8f
+	sha512sums = 7ce6f5937a1f844ddbc1db8fa1c219e2816cf244c56b68214f43a5d994198d3ff5cad2a844b1dda1aaa99984ec1adc4a9c8eb085dc3f8da6ce6c51bbe5bde4bd
 
 pkgname = chunky
