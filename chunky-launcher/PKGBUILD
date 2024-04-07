@@ -3,7 +3,7 @@
 
 pkgname=chunky-launcher
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Launcher for Chunky, the Minecraft mapping and rendering tool"
 url="http://chunky.llbit.se/"
 arch=('any')
@@ -27,4 +27,3 @@ package() {
   install -Dm644 chunky-launcher.desktop "$pkgdir/usr/share/applications/chunky-launcher.desktop"
   install -Dm644 chunky-cfg.png "$pkgdir/usr/share/pixmaps/chunky.png"
 }
-
