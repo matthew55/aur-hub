@@ -1,5 +1,5 @@
 pkgbase = chunky-launcher
-	pkgdesc = Launcher for Chuky, the Minecraft mapping and rendering tool
+	pkgdesc = Launcher for Chunky, the Minecraft mapping and rendering tool
 	pkgver = 1.14.0
 	pkgrel = 1
 	url = http://chunky.llbit.se/
